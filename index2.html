@@ -5,16 +5,27 @@
     <script src="index.js"></script>
 </head>
 
-<div class="second-page">
-    <ol id="notes-list">
-
-    </ol>
-</div>
-
-<a href="index.html"><h3>Back</h3></a>
-
+<body onload="listNotes()">
+    
+    <div class="second-page">
+        <ol id="notes-list">
+            
+        </ol>
+    </div>
+    
+    <a href="index.html"><h3>Back</h3></a>
+    
+</body>
 
 <script>
-
+function listNotes() {
+    let notesListElement = document.getElementById("notes-list");
+    Object.keys(localStorage).forEach((key) => {
+        console.log(localStorage.getItem(key))
+        let noteListItem = document.createElement("li")
+        noteListItem.innerText = localStorage.getItem(key)
+        notesListElement.append(noteListItem)
+});
+}
 
 </script>

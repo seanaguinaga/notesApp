@@ -21,6 +21,12 @@
 var textElement = document.getElementById("note")
 
 function saveNote() {
-    
+    let noteTextArea = document.getElementById("note")
+    if (!noteTextArea.value) {
+        alert("You must enter a note to save it")
+        return
+    }
+    localStorage.setItem(`${Date.now()}`, noteTextArea.value)
+    noteTextArea.value = ""
 }
 </script>
