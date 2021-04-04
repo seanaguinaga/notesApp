@@ -20,10 +20,11 @@
 <script>
 function listNotes() {
     let notesListElement = document.getElementById("notes-list");
-    Object.keys(localStorage).forEach((key) => {
-        console.log(localStorage.getItem(key))
+    let existingNotes = JSON.parse(localStorage.getItem("notes"));
+    Object.keys(existingNotes).forEach((key) => {
+        console.log(key)
         let noteListItem = document.createElement("li")
-        noteListItem.innerText = localStorage.getItem(key)
+        noteListItem.innerText = existingNotes[key]
         notesListElement.append(noteListItem)
 });
 }

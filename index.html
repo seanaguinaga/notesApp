@@ -21,12 +21,16 @@
 var textElement = document.getElementById("note")
 
 function saveNote() {
+    console.log("cliecke")
     let noteTextArea = document.getElementById("note")
     if (!noteTextArea.value) {
         alert("You must enter a note to save it")
         return
     }
-    localStorage.setItem(`${Date.now()}`, noteTextArea.value)
+    let existingNotes = JSON.parse(localStorage.getItem("notes"));
+    let newNote = {[Date.now().toString()]: noteTextArea.value }
+    let mergedNotes = Object.assign(existingNotes || {}, newNote)
+    localStorage.setItem("notes", JSON.stringify(mergedNotes))
     noteTextArea.value = ""
 }
 </script>
